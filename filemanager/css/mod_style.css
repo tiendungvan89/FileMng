@@ -1,0 +1,10 @@
+.modal {
+    position: absolute !important;
+    margin: unset !important;
+    left: unset !important;
+    top: unset !important;
+    bottom: unset !important;
+    right: unset !important;
+    height: unset !important;
+    width: 95% !important;
+}

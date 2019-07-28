@@ -91,7 +91,7 @@
             color: #404040;
             line-height: 2;
             margin-bottom: 10px;
-            font-size: 14px;
+            font-size: 13px;
             text-align: center;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -105,7 +105,7 @@
         .form-signin #inputPassword {
             direction: ltr;
             height: 44px;
-            font-size: 16px;
+            font-size: 13px;
         }
 
         .form-signin input[type=email],
@@ -135,7 +135,7 @@
             /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
             padding: 0px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             height: 36px;
             -moz-border-radius: 3px;
             -webkit-border-radius: 3px;

@@ -8,3 +8,16 @@
     height: unset !important;
     width: 95% !important;
 }
+
+ul.user {
+    position: absolute;
+    left: -60px;
+    top: 20px;
+    min-width: 0;
+    background: #eee;
+    padding: 5px;
+}
+
+ul.user>li>a {
+    padding: unset;
+}

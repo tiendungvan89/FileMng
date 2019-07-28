@@ -1,7 +1,24 @@
 <?php
 $version = "9.14.0";
+
+//  DUNG-VT - ADD - ST
+$uploadDir  = '';
+$uploadThumbDir  = '';
+//  DUNG-VT - ADD - END
+
+
 if (session_id() == '') {
     session_start();
+
+//  DUNG-VT - ADD - ST
+    if(!isset($_SESSION['username'])) {
+        header("Location: ../login.php"); 
+        exit;
+    }
+
+    $uploadDir = $_SESSION['upload_dir'];
+    $uploadThumbDir = $_SESSION['thumbs_upload_dir'];
+//  DUNG-VT - ADD - ED
 }
 
 mb_internal_encoding('UTF-8');
@@ -76,7 +93,10 @@ $config = array(
     | with start and final /
     |
     */
-    'upload_dir' => '/upload/',
+    //DUNG-VT MOD - ST
+    //'upload_dir' => '/upload/',
+    'upload_dir' => $uploadDir,
+    //DUNG-VT MOD - ED
     /*
     |--------------------------------------------------------------------------
     | relative path from filemanager folder to upload folder
@@ -85,7 +105,10 @@ $config = array(
     | with final /
     |
     */
-    'current_path' => '../upload/',
+    //DUNG-VT MOD - ST
+    //'current_path' => '../upload/',
+    'current_path' => '..' . $uploadDir,
+    //DUNG-VT MOD - ED
 
     /*
     |--------------------------------------------------------------------------
@@ -96,7 +119,10 @@ $config = array(
     | DO NOT put inside upload folder
     |
     */
-    'thumbs_base_path' => '../thumbs/',
+    //DUNG-VT MOD - ST
+    //'thumbs_base_path' => '../thumbs/',
+    'thumbs_base_path' => '..' . $uploadThumbDir,
+    //DUNG-VT MOD - ED
 
     /*
     |--------------------------------------------------------------------------
@@ -107,8 +133,10 @@ $config = array(
     | DO NOT put inside upload folder
     |
     */
-    'thumbs_upload_dir' => '/thumbs/',
-
+    //DUNG-VT MOD - ST
+    //'thumbs_upload_dir' => '/thumbs/',
+    'thumbs_upload_dir' => $uploadThumbDir,
+    //DUNG-VT MOD - ED
 
     /*
     |--------------------------------------------------------------------------
@@ -251,7 +279,7 @@ $config = array(
     //Show or not show filters button in filemanager
     'show_filter_buttons'                   => true,
     //Show or not language selection feature in filemanager
-    'show_language_selection'				=> true,
+    'show_language_selection'				=> false, // Dung-VT: don't let change language
     //active or deactive the transliteration (mean convert all strange characters in A..Za..z0..9 characters)
     'transliteration'						=> false,
     //convert all spaces on files name and folders name with $replace_with variable

@@ -312,7 +312,7 @@ $get_params = http_build_query($get_params);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <meta name="robots" content="noindex,nofollow">
-        <title>Responsive FileManager</title>
+        <title>UPLOAD FILE</title>
         <link rel="shortcut icon" href="img/ico/favicon.ico">
         <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
         <link rel="stylesheet" href="css/jquery.fileupload.css">
@@ -608,6 +608,11 @@ if ($ftp) {
         die();
     }
 } else {
+    //DUNG-VT - ADD - ST
+    if (!is_dir($config['current_path'])) {
+        create_folder(FALSE, $config['current_path'], $ftp, $config);
+    }
+    //DUNG-VT - ADD - ED
     $files = scandir($config['current_path'] . $rfm_subfolder . $subdir);
 }
 
@@ -868,8 +873,21 @@ $files = $sorted;
     <?php }
     }
     ?>
-
-    <li class="pull-right"><a class="btn-small" href="javascript:void('')" id="info"><i class="icon-question-sign"></i></a></li>
+    <?php // DUNG-VT MOD - ST ?>
+    <?php //<li class="pull-right"><a class="btn-small" href="javascript:void('')" id="info"><i class="icon-question-sign"></i></a></li> ?>
+    <li class="pull-right">
+        <div class="btn-group">
+            <a class="btn dropdown-toggle sorting-btn" data-toggle="dropdown" href="#">
+            <span><?php echo $_SESSION['username']; ?></span>
+            <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu pull-left user">
+                <li class="text-right">Change Password</li>
+                <li class="text-right"><a class="btn-small" href="../logout.php">Logout</a></li>
+            </ul>
+		</div>
+    </li>
+    <?php // DUNG-VT MOD - ED ?>
     <?php if($config['show_language_selection']){ ?>
     <li class="pull-right"><a class="btn-small" href="javascript:void('')" id="change_lang_btn"><i class="icon-globe"></i></a></li>
     <?php } ?>
@@ -1014,7 +1032,6 @@ $files = $sorted;
             </li>
             <?php
             }
-
 
             $files_prevent_duplicate = array();
             foreach ($files as $nu=>$file_array) {

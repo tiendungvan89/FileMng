@@ -17,7 +17,3 @@ ul.user {
     background: #eee;
     padding: 5px;
 }
-
-ul.user>li>a {
-    padding: unset;
-}

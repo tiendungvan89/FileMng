@@ -25,9 +25,6 @@
     <title>UPLOAD FILE</title>
     <style>
         /*
-        * Specific styles of signin component
-        */
-        /*
         * General styles
         */
         body, html {

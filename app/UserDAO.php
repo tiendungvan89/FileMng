@@ -28,4 +28,38 @@ class UserDAO {
         }
         return $users;
     }
+
+    /**
+     * Change password
+     * @return type
+     */
+    public function changePassword($userId, $newPassword) {
+        $stmt = $this->pdo->prepare('UPDATE tbl_user SET password = :password WHERE user_id = :user_id');
+        $stmt->bindValue(':password', $newPassword);
+        $stmt->bindValue(':user_id' , $userId);
+
+        return $stmt->execute();
+    }
+
+    /**
+     * Change password
+     * @return type
+     */
+    public function registerUser($userId, $password) {
+        $user = null;
+        $stmt = $this->pdo->prepare('INSERT INTO tbl_user(user_id, password, upload_dir, thumbs_upload_dir) '
+                                                 .'VALUES(:user_id, :password, :upload_dir, :thumbs_upload_dir)');
+        
+        $uploadDir = sprintf("/users/%s/upload/",$userId);
+        $thumbsUploadDir = sprintf("/users/%s/thumbs/",$userId);
+        $stmt->bindValue(':password', $newPassword);
+        $stmt->bindValue(':user_id' , $userId);
+        $stmt->bindValue(':upload_dir' , $uploadDir);
+        $stmt->bindValue(':thumbs_upload_dir' , $thumbsUploadDir);
+        if ($stmt->execute()) {
+            $user = new User($userId, $password, $uploadDir, $thumbsUploadDir);
+        }
+
+        return $user;
+    }
 }

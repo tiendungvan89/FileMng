@@ -312,7 +312,7 @@ $get_params = http_build_query($get_params);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <meta name="robots" content="noindex,nofollow">
-        <title>UPLOAD FILE</title>
+        <title><?php echo $config['title']; ?></title>
         <link rel="shortcut icon" href="img/ico/favicon.ico">
         <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
         <link rel="stylesheet" href="css/jquery.fileupload.css">
@@ -882,7 +882,7 @@ $files = $sorted;
             <span class="caret"></span>
             </a>
             <ul class="dropdown-menu pull-left user">
-                <li class="text-right">Change Password</li>
+                <li class="text-right"><a class="btn-small" href="../change_password.php">Change Password</a></li>
                 <li class="text-right"><a class="btn-small" href="../logout.php">Logout</a></li>
             </ul>
 		</div>

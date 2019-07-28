@@ -21,7 +21,7 @@
     <link href="css/style.css" rel="stylesheet"/>
     
     <!-- Page title -->
-    <title>UPLOAD FILE</title>
+    <title>【FILE MNG】</title>
 </head>
 
 <body>

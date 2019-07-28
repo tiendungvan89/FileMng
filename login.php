@@ -80,7 +80,7 @@
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
                 <button class="btn btn-lg btn-success btn-block btn-signin" type="submit" name="signin">SIGN IN</button>
                 <hr/>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name="signup">SIGN UP</button>
+                <a class="btn btn-lg btn-primary btn-block btn-signin" href="register.php" name="signup">SIGN UP</a>
             </form><!-- /form -->
         </div><!-- /card-container -->
     </div><!-- /container -->

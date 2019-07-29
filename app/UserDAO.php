@@ -52,7 +52,7 @@ class UserDAO {
         
         $uploadDir = sprintf("/users/%s/upload/",$userId);
         $thumbsUploadDir = sprintf("/users/%s/thumbs/",$userId);
-        $stmt->bindValue(':password', $newPassword);
+        $stmt->bindValue(':password', $password);
         $stmt->bindValue(':user_id' , $userId);
         $stmt->bindValue(':upload_dir' , $uploadDir);
         $stmt->bindValue(':thumbs_upload_dir' , $thumbsUploadDir);

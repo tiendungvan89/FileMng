@@ -483,7 +483,7 @@ $get_params = http_build_query($get_params);
                                     <span class="btn btn-success fileinput-button">
                                         <i class="glyphicon glyphicon-plus"></i>
                                         <span><?php echo trans('Upload_add_files');?></span>
-                                        <input type="file" name="files[]" multiple="multiple">
+                                        <input id="fileInput" type="file" name="files[]" multiple="multiple">
                                     </span>
                                     <button type="submit" class="btn btn-primary start">
                                         <i class="glyphicon glyphicon-upload"></i>
@@ -491,6 +491,11 @@ $get_params = http_build_query($get_params);
                                     </button>
                                     <!-- The global file processing state -->
                                     <span class="fileupload-process"></span>
+                                </div>
+                                <div id="modifiedDateWrapper" style="display: none">
+                                    <input id="modifiedDate" type="hidden" name="modified_date[]" value='1'/>
+                                    <input id="modifiedDate" type="hidden" name="modified_date[]" value='2'/>
+                                    <input id="modifiedDate" type="hidden" name="modified_date[]" value='3'/>
                                 </div>
                             </div>
                             <!-- The table listing the files available for upload/download -->
@@ -500,6 +505,32 @@ $get_params = http_build_query($get_params);
                             <div class="upload-help"><?php echo trans('Upload_base_help');?></div>
                         </div>
                     </form>
+
+                    <!-- -->
+                    <script>
+                        const fileInput = document.querySelector('#fileInput');
+                        const divModified = document.querySelector('#modifiedDateWrapper');
+
+                        fileInput.addEventListener('change', (event) => {
+                            // files is a FileList object (similar to NodeList) 
+                            const files = event.target.files;
+                            var i = 0;
+                            for (let file of files) {
+
+                                const date = new Date(file.lastModified);
+                                
+                                var str = date.getFullYear() * 10000000000000 + 
+                                          (date.getMonth() + 1) * 100000000000 + 
+                                          date.getDate() * 1000000000 + 
+                                          date.getHours() * 10000000 + 
+                                          date.getMinutes() * 100000 +  
+                                          date.getSeconds() * 1000 +  
+                                          date.getMilliseconds();
+                                //divModified.append
+                            }
+                        });
+                    </script>
+
                     <!-- The template to display files available for upload -->
                     <script id="template-upload" type="text/x-tmpl">
                     {% for (var i=0, file; file=o.files[i]; i++) { %}
